@@ -1,0 +1,78 @@
+<!-- Table -->
+<div class="rounded-lg shadow-xl row-span-2 col-span-2 bg-white">
+    <header class="px-5 py-4 border-b border-gray-100">
+        <h2 class="font-semibold text-gray-800">Price List</h2>
+    </header>
+    <div class="p-3">
+        <div class="overflow-x-auto overflow-y-auto h-80">
+            <table class="table-auto w-full">
+                <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
+                    <tr>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-left">💲 Price</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center">📉 Discounted Price</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center">🔥 Offers</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center">🏪 Shop</div>
+                        </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-center">📍 Location</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="text-sm divide-y divide-gray-100" *ngIf="productPriceLists$ | async as stores">
+                    <tr *ngFor="let store of stores">
+                        <!-- <code>{{ productPriceLists$ | async | json }}</code> -->
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-left font-medium text-green-500">
+                                ${{ store.price | number: '1.2-2' }}</div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
+                                *ngIf="store.discount_price">
+                                $ <span class="text-left">
+                                    {{ store.discount_price }}
+                                </span>
+                            </p>
+                            <p class="text-left" *ngIf="!store.discount_price">－</p>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800"
+                                *ngIf="store.offers">
+                                <span class="text-left">
+                                    {{ store.offers }}
+                                </span>
+                            </p>
+                            <p class="text-left" *ngIf="!store.offers">－</p>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-sm text-left">
+                                <span *ngIf="store.shop">
+                                    {{ store.shop }}
+                                </span>
+                                <span *ngIf="!store.shop">
+                                    Unknown
+                                </span>
+                            </div>
+                        </td>
+                        <td class="p-2 whitespace-nowrap">
+                            <div class="text-sm text-left">
+                                <span *ngIf="store.location">
+                                    {{ store.shop }}
+                                </span>
+                                <span *ngIf="!store.location">
+                                    Unknown
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

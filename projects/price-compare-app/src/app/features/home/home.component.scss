@@ -1,0 +1,9 @@
+.curve-container {
+  /* Background color */
+  // background-color: rgba(201, 172, 47, 0.3);
+  background: linear-gradient(rgb(10,94,240) 0%, rgb(88,31,208) 100%);
+
+  /* Curved corners */
+  border-bottom-left-radius: 50% 10%;
+  border-bottom-right-radius: 50% 10%;
+}

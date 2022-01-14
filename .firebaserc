@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pricelist-9fc86": {
+      "hosting": {
+        "price-compare-app": [
+          "pricelist-9fc86"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pricelist-9fc86"
+  }
+}

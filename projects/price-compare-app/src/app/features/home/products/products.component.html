@@ -1,0 +1,42 @@
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:gap-x-10 xl-grid-cols-4 gap-y-10 gap-x-2 md:py-20 py-10">
+    <!--CARD-->
+    <div class="mx-auto shadow-lg hover:shadow-2xl cursor-pointer rounded-lg max-w-md lg:w-72 w-44"
+        *ngFor="let product of products$ | async" routerLink="/product/{{product.id}}">
+        <!-- (click)="getLowestPrice(product)"-->
+        <div class="rounded-t-lg flex justify-center -space-x-64">
+            <img [src]="product.imgUrl" alt="" class="rounded-t-lg w-full h-80">
+        </div>
+        <div>
+            <div class="px-3 pt-2 pb-4">
+                <p class="tracking-wide font-bold text-gray-900 text-lg truncate hover:text-clip">
+                    ${{ product.lowest_price?.price | number: '1.2-2' }}</p>
+                <div class="flex justify-between mb-3">
+                    <div>
+                        <p class="text-sm  text-gray-700">🏪
+                            <span *ngIf="product.lowest_price?.store">
+                                {{ product.lowest_price?.store }}
+                            </span>
+                            <span *ngIf="!product.lowest_price?.store">
+                                Unknown
+                            </span>
+                        </p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-700">📍
+                            <span *ngIf="product.lowest_price?.location">
+                                {{ product.lowest_price?.location }}
+                            </span>
+                            <span *ngIf="!product.lowest_price?.location">
+                                Unknown
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <p class="uppercase tracking-wide font-semibold truncate hover:text-clip">{{ product.brand }}</p>
+                <p class="tracking-wide truncate hover:text-clip">{{ product.description }}</p>
+                <p class="tracking-wide text-sm text-gray-500 truncate hover:text-clip">{{
+                    product.quantity }}</p>
+            </div>
+        </div>
+    </div>
+</div>

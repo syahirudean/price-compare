@@ -1,0 +1,15 @@
+<section class="lg:container sm:p-6 py-4 px-2">
+    <div class="grid grid-cols-1 auto-rows-max md:grid-cols-2 gap-6 md:gap-10" *ngIf="product$ | async as product">
+        <div class="rounded-lg shadow-xl h-auto">
+            <img class="w-full rounded-lg" [src]="product.imgUrl" [alt]="product.imgUrl">
+        </div>
+        <div class="flex flex-col gap-6 h-auto">
+            <div class="rounded-lg shadow-xl p-6 border">
+                <h1 class="text-3xl font-semibold">{{ product.brand }}</h1>
+                <h3 class="text-xl">{{ product.description }}</h3>
+                <p class="text-gray-500 font-medium">{{ product.quantity }}</p>
+            </div>
+            <app-price-list [id]="product.id"></app-price-list>
+        </div>
+    </div>
+</section>
